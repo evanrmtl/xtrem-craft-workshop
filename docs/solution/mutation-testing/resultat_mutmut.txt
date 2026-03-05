@@ -1,0 +1,10 @@
+(python) nabe@info-p-pret-14x:~/S6Test/xtrem-craft-workshop/python$ mutmut run
+⠦ Generating mutants
+    done in 15ms (0 files mutated, 0 ignored, 5 unmodified)
+⠸ Running stats     
+....                                                                                                  [100%]
+4 passed in 0.01s
+Stopping early, because we could not find any test case for any mutant. It seems that the selected tests do not cover any code that we mutated.
+You can set debug=true to see the executed test names in the output above.
+You can use mutmut browse to check which parts of the source code we mutated.
+If some of the mutated code should be covered by the executed tests, consider opening an issue (with a MRE if possible).
