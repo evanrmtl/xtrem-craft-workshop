@@ -17,8 +17,7 @@ def _mutmut_trampoline(orig, mutants, call_args, call_kwargs, self_arg = None): 
         raise MutmutProgrammaticFailException('Failed programmatically')       # type: ignore
     elif mutant_under_test == 'stats': # type: ignore
         from mutmut.__main__ import record_trampoline_hit # type: ignore
-        
-        (orig.__module__ + '.' + orig.__name__) # type: ignore
+        record_trampoline_hit(orig.__module__ + '.' + orig.__name__) # type: ignore
         # (for class methods, orig is bound and thus does not need the explicit self argument)
         result = orig(*call_args, **call_kwargs) # type: ignore
         return result # type: ignore
@@ -56,7 +55,7 @@ class Bank:
 
     @staticmethod
     def create(from_currency: Currency, to_currency: Currency, rate: float) -> "Bank":
-        bank = Bank({})
+        bank = Bank()
         bank.addEchangeRate(from_currency, to_currency, rate)
 
         return bank

@@ -11,7 +11,7 @@ class Bank:
 
     @staticmethod
     def create(from_currency: Currency, to_currency: Currency, rate: float) -> "Bank":
-        bank = Bank({})
+        bank = Bank()
         bank.addEchangeRate(from_currency, to_currency, rate)
 
         return bank

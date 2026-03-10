@@ -8,3 +8,35 @@ Stopping early, because we could not find any test case for any mutant. It seems
 You can set debug=true to see the executed test names in the output above.
 You can use mutmut browse to check which parts of the source code we mutated.
 If some of the mutated code should be covered by the executed tests, consider opening an issue (with a MRE if possible).
+
+
+
+(python) nabe@info-p-pret-14x:~/S6Test/xtrem-craft-workshop/python$ mutmut run
+⠦ Generating mutants
+    done in 57ms (5 files mutated, 0 ignored, 0 unmodified)
+⠋ Running stats     
+F
+================================================= FAILURES ==================================================
+________________ TestBank.test_convert_with_different_exchange_rate_returns_different_floats ________________
+Traceback (most recent call last):
+  File "/home/nabe/S6Test/xtrem-craft-workshop/python/mutants/tests/test_bank.py", line 41, in test_convert_with_different_exchange_rate_returns_different_floats
+    bank = Bank.create(euro, usd, 1.2)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nabe/S6Test/xtrem-craft-workshop/python/mutants/src/bank.py", line 58, in create
+    bank = Bank()
+           ^^^^^^
+  File "/home/nabe/S6Test/xtrem-craft-workshop/python/mutants/src/bank.py", line 43, in __init__
+    return _mutmut_trampoline(object.__getattribute__(self, 'xǁBankǁ__init____mutmut_orig'), object.__getattribute__(self, 'xǁBankǁ__init____mutmut_mutants'), args, kwargs, self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nabe/S6Test/xtrem-craft-workshop/python/mutants/src/bank.py", line 20, in _mutmut_trampoline
+    record_trampoline_hit(orig.__module__ + '.' + orig.__name__) # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nabe/S6Test/xtrem-craft-workshop/python/.venv/lib/python3.11/site-packages/mutmut/__main__.py", line 140, in record_trampoline_hit
+    assert not name.startswith('src.'), f'Failed trampoline hit. Module name starts with `src.`, which is invalid'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Failed trampoline hit. Module name starts with `src.`, which is invalid
+========================================== short test summary info ==========================================
+FAILED tests/test_bank.py::TestBank::test_convert_with_different_exchange_rate_returns_different_floats - ...
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed in 0.01s
+failed to collect stats. runner returned 1
