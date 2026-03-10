@@ -16,9 +16,11 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
 
+    defaults:
+      run:
+        working-directory: python
+    
     steps:
 
     - uses: actions/checkout@v6
@@ -26,6 +28,6 @@ jobs:
     - name: Install uv
       uses: astral-sh/setup-uv@v7
     - name: Install dependencies
-      run: cd python/ && uv sync && uv  
+      run: uv sync && uv run task test
     - name: run tests
       run: uv run pytest
