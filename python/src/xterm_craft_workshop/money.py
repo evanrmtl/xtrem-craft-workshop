@@ -18,12 +18,10 @@ class Money:
             raise ValueError(self.currency, other.currency)
         return Money(self.amount + other.amount, other.currency)
     
-    def __mul__(self, other: "Money"):
-        if self.currency != other.currency:
-            raise ValueError(self.currency, other.currency)
-        return Money(self.amount * other.amount, other.currency)
+    def __mul__(self, other: float):
+        return Money(self.amount * other, self.currency)
     
-def __div__(self, other: "Money"):
-        if self.currency != other.currency or other.amount ==0:
-            raise ValueError(self.currency, other.currency)
-        return Money(self.amount / other.amount, other.currency)
+    def __truediv__(self, other: float):
+        if other == 0:
+            raise ValueError(self.currency, self.currency)
+        return Money(self.amount / other, self.currency)

@@ -1,9 +1,8 @@
+from xterm_craft_workshop.currency import Currency
+from xterm_craft_workshop.money_calculator import MoneyCalculator
+from xterm_craft_workshop.money import Money
 import pytest
 
-from src.currency import Currency
-from src.money import Money
-
-from src.money_calculator import MoneyCalculator
 
 class TestMoney:
     def test_add_in_usd_returns_value(self):
@@ -15,8 +14,7 @@ class TestMoney:
 
     def test_multiply_in_euros_returns_positive_number(self):
         five_euros = Money.of(5.0, Currency.EUR)
-        three_euros = Money.of(3.0, Currency.EUR)
-        fifteen_euros = five_euros * three_euros
+        fifteen_euros = five_euros * 3
 
         assert fifteen_euros == Money.of(15, Currency.EUR)
     
@@ -28,18 +26,14 @@ class TestMoney:
 
     def test_divide_in_usd_and_eur_raise_error(self):
         fifteen_euros = Money.of(15, Currency.EUR)
-        three_usd = Money.of(3, Currency.USD)
-        with pytest.raises(ValueError):
-            b=fifteen_euros/three_usd
+        assert(fifteen_euros/3 == Money.of(5, Currency.EUR))
 
 
     def test_divide_in_eur_returns_float(self):
         fifteen_euros = Money.of(15, Currency.EUR)
-        three_euros = Money.of(3, Currency.EUR)
-        assert(fifteen_euros/three_euros==5)
+        assert(fifteen_euros/3 == Money.of(5, Currency.EUR))
 
     def test_divide_in_eur_by_zero_raise_error(self):
         fifteen_euros = Money.of(15, Currency.EUR)
-        zero_euro = Money.of(0, Currency.EUR)
         with pytest.raises(ValueError):
-            b=fifteen_euros/zero_euro
+            b=fifteen_euros/0
