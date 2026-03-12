@@ -5,6 +5,10 @@ python/.venv
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# agents config
+.junie/
+.payground/
+
 # User-specific files
 *.rsuser
 *.suo
@@ -46,6 +50,7 @@ Generated\ Files/
 
 # mutmut
 .mutmut-cache
+mutants/
 
 # MSTest test Results
 [Tt]est[Rr]esult*/
