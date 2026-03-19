@@ -11,17 +11,18 @@ krw = Currency.KRW
 class TestBank:
     
     def given_euro_usd_when_convert_then_return_float(self):
-        bank = Bankbuilder.create( euro, usd, 1.2)
-        create(Builder("Bank")
-                           .within(self.portal)
-                           .titled(u"Bank"))
+        bank = Bankbuilder.pivotCurrency(Currency.EUR).withExchangeRate(Currency.USD, 1.2).build()
+        
         expected_result = 12
 
         result = bank.convert(10, euro, usd)
 
         assert result == expected_result
 
+
     def given_euro_usd_when_convert_then_return_same_value(self):
+        bank = Bankbuilder.pivotCurrency(Currency.EUR).withExchangeRate(Currency.USD, 1).build()
+
         bank = Bank.create(euro, usd, 1.0)
         expected_result = 10
 
@@ -32,7 +33,8 @@ class TestBank:
 
     def given_euro_usd_when_convert_euro_krw_then_return_error(self):
         with pytest.raises(MissingExchangeRateError) as error:
-            bank = Bank.create(euro, usd, 1.2)
+            bank = Bankbuilder.pivotCurrency(Currency.EUR).withExchangeRate(Currency.USD, 1.2).build()
+
             expected_result = 12
 
             result = bank.convert(10, euro, krw)
@@ -40,8 +42,11 @@ class TestBank:
         assert str(error.value) == "EUR->KRW"
 
     def test_convert_with_different_exchange_rate_returns_different_floats(self):
+        bank = Bankbuilder.pivotCurrency(Currency.EUR).withExchangeRate(Currency.USD, 1.2).build()
+
         bank = Bank.create(euro, usd, 1.2)
         expected_result = 12
+
 
         result = bank.convert(10, euro, usd)
 
