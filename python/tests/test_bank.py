@@ -11,7 +11,10 @@ krw = Currency.KRW
 class TestBank:
     
     def given_euro_usd_when_convert_then_return_float(self):
-        bank = Bank.create(euro, usd, 1.2)
+        bank = Bankbuilder.create( euro, usd, 1.2)
+        create(Builder("Bank")
+                           .within(self.portal)
+                           .titled(u"Bank"))
         expected_result = 12
 
         result = bank.convert(10, euro, usd)
