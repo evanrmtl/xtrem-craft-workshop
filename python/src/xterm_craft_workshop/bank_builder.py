@@ -11,6 +11,10 @@ class Bankbuilder:
         self._exchange_rate = {Currency.USD, 1.2}
         self.pivot_currency = Currency.EUR
 
+    @staticmethod
+    def a_bank() -> "Bankbuilder":
+        return Bankbuilder()
+
 
     def with_pivot_currency(self, currency : Currency):
         self.pivot_currency = currency

@@ -43,7 +43,7 @@ class TestBank:
         assert str(error.value) == "EUR->KRW"
 
     def test_convert_with_different_exchange_rate_returns_different_floats(self):
-        bank = Bankbuilder.with_pivot_currency(Currency.EUR).withExchangeRate(Currency.USD, 1.2).build()
+        bank = Bankbuilder.a_bank().with_pivot_currency(Currency.EUR).withExchangeRate(Currency.USD, 1.2).build()
 
         # bank = Bank.create(euro, usd, 1.2)
         expected_result = 12
