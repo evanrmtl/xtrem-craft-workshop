@@ -20,5 +20,5 @@ class Bankbuilder:
         pass
 
     def build(self):
-        return Bank.create(self.pivot_currency, Currency.USD, 1.2)
+        return Bank.create(self.pivot_currency, self._exchange_rate.items()[0], 1.2)
 
