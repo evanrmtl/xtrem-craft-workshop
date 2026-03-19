@@ -1,6 +1,7 @@
 import pytest
 
 from xterm_craft_workshop.bank import Bank
+from xterm_craft_workshop.bank_builder import Bankbuilder
 from xterm_craft_workshop.currency import Currency
 from xterm_craft_workshop.missing_exchange_rate_error import MissingExchangeRateError
 
@@ -11,7 +12,7 @@ krw = Currency.KRW
 class TestBank:
     
     def given_euro_usd_when_convert_then_return_float(self):
-        bank = Bankbuilder.pivotCurrency(Currency.EUR).withExchangeRate(Currency.USD, 1.2).build()
+        bank = Bankbuilder.with_pivot_currency(Currency.EUR).withExchangeRate(Currency.USD, 1.2).build()
         
         expected_result = 12
 

@@ -1,5 +1,6 @@
 from typing import Dict
 from xterm_craft_workshop.currency import Currency
+from xterm_craft_workshop.bank import Bank
 from xterm_craft_workshop.missing_exchange_rate_error import MissingExchangeRateError
 
 
@@ -8,15 +9,16 @@ class Bankbuilder:
 
     def __init__(self, exchange_rate = {}) -> None:
         self._exchange_rate = exchange_rate
+        self.pivot_currency = Currency.EUR
 
 
-    def pivotCurrency(currency : Currency):
+    def with_pivot_currency(self, currency : Currency):
 
         pass
 
-    def withExchangeRate(currency: Currency, to: float):
+    def withExchangeRate(self, currency: Currency, to: float):
         pass
 
-    def build():
-        pass
+    def build(self):
+        return Bank.create(self.pivot_currency, Currency.USD, 1.2)
 
