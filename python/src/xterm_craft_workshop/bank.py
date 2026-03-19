@@ -16,7 +16,7 @@ class Bank:
 
         return bank
     
-    def addEchangeRate(self, from_currency: Currency, to_currency: Currency, rate: float) -> None:
+    def addEchangeRate(self, from_currency: Currency, to_currency: Currency, rate: float) :
         self._exchange_rate[f'{from_currency.value}->{to_currency.value}'] = rate
 
     def convert(self, amount: float, from_currency: Currency, to_currency: Currency) -> float:
