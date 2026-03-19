@@ -5,10 +5,10 @@ from xterm_craft_workshop.missing_exchange_rate_error import MissingExchangeRate
 
 
 class Bankbuilder:
-    _exchange_rate: Dict[str, float] = {}
+    _exchange_rate: Dict[Currency, float] = {}
 
     def __init__(self, exchange_rate = {}) -> None:
-        self._exchange_rate = exchange_rate
+        self._exchange_rate = {Currency.USD, 1.2}
         self.pivot_currency = Currency.EUR
 
 
