@@ -8,7 +8,10 @@ class Bankbuilder:
     _exchange_rate: Dict[Currency, (Currency,float)] = []
 
     def __init__(self, exchange_rate = {}) -> None:
-        self._exchange_rate[str(Currency.USD)] = (Currency.USD, 1.2)
+        self._exchange_rate = {
+            str(Currency.USD) : 1.2
+        }
+        #self._exchange_rate[str(Currency.USD)] = (Currency.USD, 1.2)
         self.pivot_currency = Currency.EUR
 
     @staticmethod
@@ -21,11 +24,10 @@ class Bankbuilder:
         
 
     def withExchangeRate(self, currency: Currency, to: float):
-        self._exchange_rate[str(Currency.USD)] = (Currency.USD, 1.2)
-        self._exchange_rate = {currency, to}
+        self._exchange_rate[str(currency)] = (currency, to)
 
     def build(self):
         print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", self._exchange_rate.keys())
 
-        return Bank.create(self.pivot_currency, self._exchange_rate.keys()[0], self._exchange_rate.get(Currency.USD))
+        return Bank.create(self.pivot_currency, self._exchange_rate.get(str(self.pivot_currency)), self._exchange_rate.get(str(self.pivot_currency)[1]))
 
