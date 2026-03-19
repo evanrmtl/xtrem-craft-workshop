@@ -13,11 +13,11 @@ class Bankbuilder:
 
 
     def with_pivot_currency(self, currency : Currency):
-
-        pass
+        self.pivot_currency = currency
+        
 
     def withExchangeRate(self, currency: Currency, to: float):
-        pass
+        self._exchange_rate = {currency, to}
 
     def build(self):
         return Bank.create(self.pivot_currency, self._exchange_rate.items()[0][0], self._exchange_rate.items()[0][1])
